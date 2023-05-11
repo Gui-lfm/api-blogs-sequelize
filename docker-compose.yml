@@ -5,13 +5,8 @@ services:
   node:
     # Faz o build do Dockerfile da pasta atual e utiliza o resultado desse build
     # como a imagem do container
-<<<<<<< HEAD
-    image: node:16
-    user: node
-=======
     image: blogs_api
     build: .
->>>>>>> master
     # Nome do container para facilitar execução
     container_name: blogs_api
     # Mesmo que `docker run -t`
