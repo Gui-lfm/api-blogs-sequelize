@@ -6,8 +6,17 @@ const getUserById = (id) => User.findByPk(id);
 
 const getUserByEmail = (email) => User.findOne({ where: { email } });
 
-const createUser = ({ displayName, email, password }) =>
-  User.create({ displayName, email, password });
+const createUser = (newUser) => {
+  const { displayName, email, password, image } = newUser;
+
+  const newUserData = { displayName, email, password };
+
+  // caso o atributo image exista, ele é adicionado ao objeto de novo usuário
+  if (image) {
+    newUserData.image = image;
+  }
+  User.create(newUserData);
+};
 
 module.exports = {
   getUsers,
