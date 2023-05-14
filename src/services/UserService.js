@@ -1,6 +1,7 @@
 const { User } = require('../models');
-
-const getUsers = () => User.findAll();
+// retorna a lista de usuários excluindo o atributo de senha, evitando a exposição de 
+// dados sensíveis.
+const getUsers = () => User.findAll({ attributes: { exclude: ['password'] } });
 
 const getUserById = (id) => User.findByPk(id);
 

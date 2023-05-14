@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
 
   const alreadyExists = await UserService.getUserByEmail(email);
   console.log(alreadyExists);
-  if (alreadyExists !== null) {
+  if (alreadyExists) {
     return res.status(409).json({ message: 'User already registered' });
   }
 
