@@ -18,4 +18,6 @@ app.post('/user', verifyName, verifyEmail, verifyPassword, user.createUser);
 
 app.get('/user', verifyToken, user.getAllUsers);
 
+app.get('/user/:id', verifyToken, user.getUserById);
+
 module.exports = app;
