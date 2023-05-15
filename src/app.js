@@ -23,4 +23,6 @@ app.get('/user/:id', verifyToken, user.getUserById);
 
 app.post('/categories', verifyToken, category.addCategory);
 
+app.get('/categories', verifyToken, category.getCategories);
+
 module.exports = app;
