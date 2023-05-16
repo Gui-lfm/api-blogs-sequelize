@@ -28,4 +28,6 @@ app.get('/categories', verifyToken, category.getCategories);
 
 app.get('/post', verifyToken, posts.getPosts);
 
+app.get('/post/:id', verifyToken, posts.getPostById);
+
 module.exports = app;

@@ -11,7 +11,16 @@ const getPosts = () =>
     ],
   });
 
+const getPostById = (id) =>
+  BlogPost.findByPk(id, {
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories' },
+    ],
+  });
+
 module.exports = {
   addPost,
   getPosts,
+  getPostById,
 };
