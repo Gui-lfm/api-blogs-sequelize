@@ -5,9 +5,9 @@ const createUser = async (req, res) => {
   try {
     const { displayName, email, password, image } = req.body;
     const newUser = { displayName, email, password, image };
-    await UserService.createUser(newUser);
-    const userWithoutPassword = { displayName, email, image };
-    const token = createToken(userWithoutPassword);
+    const response = await UserService.createUser(newUser);
+    console.log(response);
+    const token = createToken(response);
     return res.status(201).json({ token });
   } catch (error) {
     return res

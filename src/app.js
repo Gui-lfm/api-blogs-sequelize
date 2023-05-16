@@ -3,7 +3,14 @@ const routes = require('./routes');
 const user = require('./controllers/UserController');
 const category = require('./controllers/CategoryController');
 const posts = require('./controllers/PostController');
-const { verifyName, verifyEmail, verifyPassword, verifyToken } = require('./middlewares');
+const {
+  verifyName,
+  verifyEmail,
+  verifyPassword,
+  verifyToken,
+  verifyUser,
+  verifyCategory,
+} = require('./middlewares');
 
 const app = express();
 
@@ -29,5 +36,7 @@ app.get('/categories', verifyToken, category.getCategories);
 app.get('/post', verifyToken, posts.getPosts);
 
 app.get('/post/:id', verifyToken, posts.getPostById);
+
+app.post('/post', verifyToken, verifyUser, verifyCategory, posts.createPost);
 
 module.exports = app;

@@ -15,7 +15,6 @@ module.exports = async (req, res) => {
     }
 
     const user = await UserService.getUserByEmail(email);
-  
     // verifica se os dados enviados estão errados ou inexistentes
     if (!user || user.password !== password) {
       return res.status(400).json({ message: 'Invalid fields' });

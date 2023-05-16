@@ -6,9 +6,13 @@ const getUsers = () => User.findAll({ attributes: { exclude: ['password'] } });
 const getUserById = (id) =>
   User.findByPk(id, { attributes: { exclude: ['password'] } });
 
-const getUserByEmail = (email) => User.findOne({ where: { email } });
+const getUserByEmail = async (email) => {
+  const response = await User.findOne({ where: { email } });
 
-const createUser = (newUser) => {
+  return response.dataValues;
+};
+
+const createUser = async (newUser) => {
   const { displayName, email, password, image } = newUser;
 
   const newUserData = { displayName, email, password };
@@ -17,7 +21,11 @@ const createUser = (newUser) => {
   if (image) {
     newUserData.image = image;
   }
-  User.create(newUserData);
+  const { dataValues } = await User.create(newUserData);
+
+  const { password: _password, ...dataWithoutPassword } = dataValues;
+
+  return dataWithoutPassword;
 };
 
 module.exports = {
