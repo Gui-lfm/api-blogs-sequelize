@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
 
     // desconstruindo o objeto usuário, gerando assim um novo objeto de usuário sem o atributo
     // password, o novo objeto será usado na geração do token
-    const { password: _password, ...userWithoutPassword } = user;
+    const { password: _password, ...userWithoutPassword } = user.dataValues;
     const token = createToken(userWithoutPassword);
 
     return res.status(200).json({ token });

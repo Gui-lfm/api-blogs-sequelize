@@ -8,8 +8,7 @@ const getUserById = (id) =>
 
 const getUserByEmail = async (email) => {
   const response = await User.findOne({ where: { email } });
-
-  return response.dataValues;
+  return response;
 };
 
 const createUser = async (newUser) => {
