@@ -10,6 +10,7 @@ const {
   verifyToken,
   verifyUser,
   verifyCategory,
+  verifyAuthorship,
 } = require('./middlewares');
 
 const app = express();
@@ -38,5 +39,7 @@ app.get('/post', verifyToken, posts.getPosts);
 app.get('/post/:id', verifyToken, posts.getPostById);
 
 app.post('/post', verifyToken, verifyUser, verifyCategory, posts.createPost);
+
+app.put('/post/:id', verifyToken, verifyUser, verifyAuthorship, posts.updatePost);
 
 module.exports = app;

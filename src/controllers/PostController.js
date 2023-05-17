@@ -1,8 +1,6 @@
 const { PostService } = require('../services');
 const { validateToken } = require('../auth/authFunctions');
-
-const verifyBody = (title, content, categoryIds) =>
-  title && content && categoryIds;
+const verifyBody = require('../utils/verifyBody');
 
 const createPost = async (req, res) => {
   try {
@@ -51,10 +49,16 @@ const updatePost = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, content } = req.body;
-    const updatedPost = PostService.updatePost({ id, title, content });
+    if (!verifyBody(title, content)) {
+      return res
+        .status(400)
+        .json({ message: 'Some required fields are missing' });
+    }
+    const updatedPost = await PostService.updatePost({ id, title, content });
 
     return res.status(200).json(updatedPost);
   } catch (error) {
+    console.log('aqui', error);
     return res.status(500).json({ message: error.message });
   }
 };
