@@ -27,9 +27,16 @@ const createUser = async (newUser) => {
   return dataWithoutPassword;
 };
 
+const deleteUser = async (id) => {
+  const user = await User.findByPk(id);
+  await user.destroy();
+  return true;
+};
+
 module.exports = {
   getUsers,
   getUserById,
   getUserByEmail,
   createUser,
+  deleteUser,
 };

@@ -1,4 +1,4 @@
-const { createToken } = require('../auth/authFunctions');
+const tokenFunctions = require('../auth/authFunctions');
 const { UserService } = require('../views');
 
 const createUser = async (req, res) => {
@@ -7,7 +7,7 @@ const createUser = async (req, res) => {
     const newUser = { displayName, email, password, image };
     const response = await UserService.createUser(newUser);
     console.log(response);
-    const token = createToken(response);
+    const token = tokenFunctions.createToken(response);
     return res.status(201).json({ token });
   } catch (error) {
     return res
@@ -38,8 +38,22 @@ const getUserById = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  try {
+    const { authorization } = req.headers;
+    const { id: userId } = tokenFunctions.validateToken(authorization).data;
+    const response = await UserService.deleteUser(userId);
+    if (response) {
+      return res.status(204);
+    }
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createUser,
   getAllUsers,
   getUserById,
+  deleteUser,
 };
