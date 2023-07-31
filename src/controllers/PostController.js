@@ -1,4 +1,4 @@
-const { PostService } = require('../services');
+const { PostService } = require('../views');
 const { validateToken } = require('../auth/authFunctions');
 const verifyBody = require('../utils/verifyBody');
 

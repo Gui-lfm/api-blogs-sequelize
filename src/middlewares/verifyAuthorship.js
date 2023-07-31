@@ -1,5 +1,5 @@
 const { validateToken } = require('../auth/authFunctions');
-const { PostService } = require('../services');
+const { PostService } = require('../views');
 
 module.exports = async (req, res, next) => {
   const { authorization } = req.headers;

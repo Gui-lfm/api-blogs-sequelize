@@ -1,5 +1,5 @@
 const { createToken } = require('../auth/authFunctions');
-const { UserService } = require('../services');
+const { UserService } = require('../views');
 
 const createUser = async (req, res) => {
   try {

@@ -1,4 +1,4 @@
-const { UserService } = require('../services');
+const { UserService } = require('../views');
 const { createToken } = require('../auth/authFunctions');
 
 const verifyBody = (email, password) => email && password;

@@ -1,4 +1,4 @@
-const { CategoryService } = require('../services');
+const { CategoryService } = require('../views');
 
 module.exports = async (req, res, next) => {
   const { categoryIds } = req.body;

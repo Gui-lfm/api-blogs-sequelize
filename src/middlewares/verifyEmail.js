@@ -1,4 +1,4 @@
-const { UserService } = require('../services');
+const { UserService } = require('../views');
 
 const validEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 

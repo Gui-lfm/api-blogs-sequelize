@@ -1,4 +1,4 @@
-const { UserService } = require('../services');
+const { UserService } = require('../views');
 const { validateToken } = require('../auth/authFunctions');
 
 // verifica se token contem um usuário existente
