@@ -5,6 +5,7 @@ const verifyToken = require('./verifyToken');
 const verifyUser = require('./verifyUser');
 const verifyCategory = require('./verifyCategory');
 const verifyAuthorship = require('./verifyAuthorship');
+const verifyPost = require('./verifyPost');
 
 module.exports = {
   verifyEmail,
@@ -14,4 +15,5 @@ module.exports = {
   verifyUser,
   verifyCategory,
   verifyAuthorship,
+  verifyPost,
 };
